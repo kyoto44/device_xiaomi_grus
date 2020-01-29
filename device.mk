@@ -514,8 +514,8 @@ PRODUCT_PACKAGES += \
     libaacwrapper \
     libnl
 
-PRODUCT_BOOT_JARS += \
-    WfdCommon
+#PRODUCT_BOOT_JARS += \
+   # WfdCommon
 #    UxPerformance \
 #    QPerformance
 
