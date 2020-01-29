@@ -15,8 +15,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 # Inherit some common stuff
 $(call inherit-product, vendor/havoc/config/common_full_phone.mk)
 
-$(call inherit-product, vendor/havoc/config/common.mk)
-
 # Inherit from land device
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
 
@@ -36,3 +34,9 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE="grus"
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+# Havoc
+export export HAVOC_BUILD_TYPE=Official
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.havoc.maintainer=kyoto44
