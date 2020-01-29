@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2020 The Havoc-OS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,8 +14,8 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/lineage_grus.mk
+	$(LOCAL_DIR)/havoc_grus.mk
 
 COMMON_LUNCH_CHOICES := \
-    lineage_grus-userdebug \
-    lineage_grus-eng
+    havoc_grus-userdebug \
+    havoc_grus-eng
