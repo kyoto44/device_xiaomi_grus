@@ -69,8 +69,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.ims.xml \
     frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml \
-    vendor/lineage/config/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml
+    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
 # AID/fs configs
 PRODUCT_PACKAGES += \
@@ -97,7 +96,7 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.r_submix.default \
     audio.usb.default \
-    sound_trigger.primary.sdm71 \
+    sound_trigger.primary.sdm710 \
     audio.primary.sdm710 \
     libaudioroute \
     libhdmiedid \
@@ -140,12 +139,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
-
-#    $(TOPDIR)frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:/$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
-#    $(TOPDIR)frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:/$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
-#    $(TOPDIR)frameworks/av/services/audiopolicy/config/default_volume_tables.xml:/$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
-#    $(TOPDIR)frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:/$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
-#    $(TOPDIR)frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:/$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -230,23 +223,6 @@ PRODUCT_PACKAGES += \
     libgnss \
     libwifi-hal-ctrl
 
-
-# Stick with QTI gatekeeper/keymaster as for now
-# Gatekeeper HAL
-#PRODUCT_PACKAGES += \
-#    android.hardware.gatekeeper@1.0-impl \
-#    android.hardware.gatekeeper@1.0-service
-
-# Keymaster
-#PRODUCT_PACKAGES += \
-#    android.hardware.keymaster@3.0-impl \
-#    android.hardware.keymaster@3.0-service \
-#    android.hardware.keymaster@4.0-impl \
-#    android.hardware.keymaster@4.0-service
-
-#PRODUCT_PACKAGES += \
-#    vendor.qti.hardware.cryptfshw@1.0-service-qti.qsee
-
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health@2.0-impl \
@@ -279,12 +255,9 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
 
 # Fingerprint
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/fingerprint/android.hardware.biometrics.fingerprint@2.1-service.xiaomi_sdm710.rc:system/etc/init/android.hardware.biometrics.fingerprint@2.1-service.xiaomi_sdm710.rc
-
-# Fingerprint
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
+    frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml \
+    $(LOCAL_PATH)/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml:system/etc/permissions/vendor.lineage.biometrics.fingerprint.inscreen.xml  
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -303,9 +276,6 @@ PRODUCT_PACKAGES += \
 # IFAA manager
 PRODUCT_PACKAGES += \
     org.ifaa.android.manager
-
-#PRODUCT_BOOT_JARS += \
-#    org.ifaa.android.manager
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -340,10 +310,6 @@ PRODUCT_PACKAGES += \
 # IRSC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
-
-# Media
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/configs/media_profiles_vendor.xml:system/etc/media_profiles_vendor.xml
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -436,7 +402,6 @@ PRODUCT_COPY_FILES += \
 # Seccomp policy
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/mediacodec-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
-#    $(LOCAL_PATH)/seccomp/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
 
 # Thermal
 PRODUCT_PACKAGES += \
@@ -498,8 +463,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
-#    $(LOCAL_PATH)/wifi/aoa_cldb_falcon.bin:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/aoa_cldb_falcon.bin \
-#    $(LOCAL_PATH)/wifi/aoa_cldb_swl14.bin:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/aoa_cldb_swl14.bin \
 
 # xiaomi doze
 PRODUCT_PACKAGES += \
@@ -509,11 +472,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libaacwrapper \
     libnl
-
-#PRODUCT_BOOT_JARS += \
-   # WfdCommon
-#    UxPerformance \
-#    QPerformance
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -527,28 +485,6 @@ PRODUCT_PACKAGES += \
     Tag \
     SecureElement \
     android.hardware.secure_element@1.0-service
-
-# NFC
-#PRODUCT_PACKAGES += \
-#    nfc_nci.nqx.default.hw \
-#    nfc_nci.nqx.default \
-#    nqnfcee_access.xml \
-#    nqnfcse_access.xml \
-#    libnqnfc-nci \
-#    libnqnfc_nci_jni \
-#    jcos_nq_client \
-#    se_nq_extn_client \
-#    libp61-jcop-kit \
-#    com.gsma.services.nfc \
-#    com.nxp.nfc.nq \
-#    com.nxp.nfc.nq.xml \
-#    com.android.nfc_extras \
-#    vendor.nxp.hardware.nfc@1.1-service \
-#    vendor.nxp.hardware.nfc@1.2-service \
-#    Tag \
-#    NQNfcNci \
-#    android.hardware.nfc@1.2-service \
-#    android.hardware.nfc@1.2-impl
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/nfc/libnfc-nci.conf:system/etc/libnfc-nci.conf \
@@ -569,9 +505,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     qti-telephony-common
 
-# ANT+
-PRODUCT_PACKAGES += \
-    AntHalService
 
 # Display calibration
 PRODUCT_PACKAGES += \
