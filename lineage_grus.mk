@@ -13,13 +13,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
 # Inherit some common stuff
-$(call inherit-product, vendor/havoc/config/common_full_phone.mk)
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Inherit from land device
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := havoc_grus
+PRODUCT_NAME := lineage_grus
 PRODUCT_DEVICE := grus
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := MI 9 SE
@@ -34,9 +34,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE="grus"
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
-
-# Havoc
-export export HAVOC_BUILD_TYPE=Official
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.havoc.maintainer=kyoto44
