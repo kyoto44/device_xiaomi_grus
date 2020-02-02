@@ -473,6 +473,9 @@ PRODUCT_PACKAGES += \
     libaacwrapper \
     libnl
 
+PRODUCT_BOOT_JARS += \
+   WfdCommon   
+
 # Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/qwerty.idc:system/usr/idc/qwerty.idc \
