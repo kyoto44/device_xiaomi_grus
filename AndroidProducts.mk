@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2020 The Havoc-OS Project
+# Copyright (C) 2020 The Pixel Experience Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,8 +14,8 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/havoc_grus.mk
+	$(LOCAL_DIR)/aosp_grus.mk
 
 COMMON_LUNCH_CHOICES := \
-    havoc_grus-userdebug \
-    havoc_grus-eng
+    aosp_grus-userdebug \
+    aosp_grus-eng

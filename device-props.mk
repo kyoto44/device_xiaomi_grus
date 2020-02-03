@@ -27,11 +27,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.vt_avail_ovr=1 \
     persist.vendor.ims.disableUserAgent=0
 
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    persist.radio.rat_on=combine \
-#    persist.radio.data_ltd_sys_ind=1 \
-#    persist.radio.data_con_rprt=1
-
 # Disable sensors debug
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.debug.sensors.hal=0
@@ -71,12 +66,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.protected_contents=true \
     ro.surface_flinger.max_frame_buffer_acquired_buffers=3
 
-#
 PRODUCT_PROPERTY_OVERRIDES += \
     vendor.power.pasr.enabled=true \
     vendor.gatekeeper.disable_spu=true \
     persist.sys.sf.native_mode=true
-#    ro.apex.updatable=false
 
 # Bunch of props from MIUI need to review
 PRODUCT_PROPERTY_OVERRIDES += \
