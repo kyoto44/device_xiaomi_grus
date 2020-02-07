@@ -49,6 +49,7 @@ using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 
 // Generated HIDL files
+using android::hardware::power::V1_2::IPower;
 using android::hardware::power::V1_2::implementation::Power;
 
 int main() {
@@ -57,7 +58,7 @@ int main() {
 #endif
 
     status_t status;
-    android::sp<Power> service = nullptr;
+    android::sp<IPower> service = nullptr;
 
     ALOGI("Power HAL Service 1.2 is starting.");
 
@@ -70,7 +71,7 @@ int main() {
 
     configureRpcThreadpool(1, true /*callerWillJoin*/);
 
-    status = service->registerAsSystemService();
+    status = service->registerAsService();
     if (status != OK) {
         ALOGE("Could not register service for Power HAL(%d).", status);
         goto shutdown;

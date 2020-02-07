@@ -1011,19 +1011,6 @@
         <fqname>@1.0::IVSIMService/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>vendor.lineage.livedisplay</name>
-        <transport>hwbinder</transport>
-        <version>2.0</version>
-        <interface>
-            <name>IDisplayModes</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IPictureAdjustment</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.bluetooth.a2dp</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -1032,15 +1019,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::IBluetoothAudioOffload/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>vendor.lineage.power</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>ILineagePower</name>
-            <instance>default</instance>
-        </interface>
     </hal>
     <hal format="hidl">
         <name>vendor.lineage.biometrics.fingerprint.inscreen</name>
