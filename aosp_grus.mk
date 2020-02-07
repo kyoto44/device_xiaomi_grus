@@ -18,6 +18,9 @@ $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 # Inherit from land device
 $(call inherit-product, $(DEVICE_PATH)/device.mk)
 
+# Setup dalvik vm configs
+$(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
+
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := aosp_grus
 PRODUCT_DEVICE := grus

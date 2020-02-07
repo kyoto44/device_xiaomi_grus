@@ -1,12 +1,10 @@
 This repository contains device configuration for Xiaomi MI 9 SE (grus)
 
-Build type: Full treble build
-
 ## Copyright
 
 ```
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2020 The Havoc-OS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
