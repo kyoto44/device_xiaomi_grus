@@ -77,37 +77,21 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    android.hardware.audio@2.0-impl \
     android.hardware.audio@2.0-service \
-    android.hardware.audio@5.0 \
+    android.hardware.audio.effect@2.0-service \
     android.hardware.audio@5.0-impl \
-    android.hardware.audio.effect@2.0-impl \
-    android.hardware.audio.effect@5.0 \
     android.hardware.audio.effect@5.0-impl \
     android.hardware.soundtrigger@2.2-impl \
-    android.hardware.audio.common@2.0-util \
-    android.hardware.audio.common@5.0 \
-    android.hardware.audio.common@5.0-util \
-    android.hardware.bluetooth.audio@2.0-impl \
-    android.hardware.soundtrigger@2.2-impl \
-    android.hardware.bluetooth.a2dp@1.0-impl \
-    android.hardware.bluetooth.a2dp@1.0-service \
-    audio.bluetooth.default \
+    audio.primary.sdm710 \
     audio.a2dp.default \
     audio.r_submix.default \
     audio.usb.default \
-    sound_trigger.primary.sdm710 \
-    audio.primary.sdm710 \
-    libaudioroute \
-    libhdmiedid \
-    libhfp \
     libaudio-resampler \
+    libaudioroute \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libvolumelistener \
-    libqcompostprocbundle \
-    libtinycompress \
     tinymix
 
 PRODUCT_COPY_FILES += \
@@ -443,18 +427,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     hostapd \
-    libwifi-hal-qcom \
     libwpa_client \
-    wpa_supplicant \
-    wpa_supplicant.conf \
+    libwifi-hal-qcom \
     vendor.qti.hardware.wifi.hostapd@1.0.vendor \
     vendor.qti.hardware.wifi.supplicant@2.0.vendor \
-    hostapd_cli \
-    libqsap_sdk \
-    libQWiFiSoftApCfg \
-    vendor.qti.hardware.wifi.supplicant@1.0_vendor \
-    wificond \
-    wifilogd
+    wpa_supplicant \
+    wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/hostapd.accept:$(TARGET_COPY_OUT_VENDOR)/etc/hostapd/hostapd.accept \
