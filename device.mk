@@ -138,8 +138,11 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
     libxml2 \
-    Snap \
+    Gcam \
     vendor.qti.hardware.camera.device@1.0.vendor
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/Gcam/burial8.1_mark_v2_mi9se.xml:$(TARGET_COPY_OUT_DATA)/media/0/GCam/Configs7/burial8.1_mark_v2_mi9se.xml
 
 # CNE
 PRODUCT_PACKAGES += \
