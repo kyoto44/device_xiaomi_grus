@@ -19,14 +19,14 @@
 #include "FingerprintInscreen.h"
 
 #include <android-base/logging.h>
-#include <fstream>
 #include <cmath>
+#include <fstream>
 
 #define COMMAND_NIT 10
 #define PARAM_NIT_FOD 3
 #define PARAM_NIT_NONE 0
 
-#define DISPPARAM_PATH "/sys/class/drm/card0-DSI-1/disp_param"
+#define DISPPARAM_PATH "/sys/devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/card0-DSI-1/disp_param"
 #define DISPPARAM_FOD_BACKLIGHT_HBM "0x1D007FF"
 #define DISPPARAM_FOD_BACKLIGHT_RESET "0x2D01000"
 
@@ -34,19 +34,15 @@
 #define FOD_STATUS_ON 1
 #define FOD_STATUS_OFF 0
 
-#define FOD_SENSOR_X 455
-#define FOD_SENSOR_Y 1920
-#define FOD_SENSOR_SIZE 173
+#define FOD_ERROR 8
+#define FOD_ERROR_VENDOR 6
 
-namespace {
+#define FOD_SENSOR_X 448
+#define FOD_SENSOR_Y 1938
+#define FOD_SENSOR_SIZE 185
 
-template <typename T>
-static void set(const std::string& path, const T& value) {
-    std::ofstream file(path);
-    file << value;
-}
-
-} // anonymous namespace
+#define BRIGHTNESS_PATH "/sys/class/backlight/panel0-backlight/brightness_clone"
+#define DOZE_BRIGHTNESS_PATH "/sys/class/drm/card0-DSI-1/doze_brightness"
 
 namespace vendor {
 namespace lineage {
@@ -55,6 +51,21 @@ namespace fingerprint {
 namespace inscreen {
 namespace V1_0 {
 namespace implementation {
+
+template <typename T>
+static T get(const std::string& path, const T& def) {
+    std::ifstream file(path);
+    T result;
+
+    file >> result;
+    return file.fail() ? def : result;
+}
+
+template <typename T>
+static void set(const std::string& path, const T& value) {
+    std::ofstream file(path);
+    file << value;
+}
 
 FingerprintInscreen::FingerprintInscreen() {
     xiaomiFingerprintService = IXiaomiFingerprint::getService();
@@ -83,6 +94,7 @@ Return<void> FingerprintInscreen::onFinishEnroll() {
 Return<void> FingerprintInscreen::onPress() {
     set(DISPPARAM_PATH, DISPPARAM_FOD_BACKLIGHT_HBM);
     xiaomiFingerprintService->extCmd(COMMAND_NIT, PARAM_NIT_FOD);
+
     return Void();
 }
 
@@ -101,9 +113,11 @@ Return<void> FingerprintInscreen::onHideFODView() {
     set(FOD_STATUS_PATH, FOD_STATUS_OFF);
     set(DISPPARAM_PATH, DISPPARAM_FOD_BACKLIGHT_RESET);
     xiaomiFingerprintService->extCmd(COMMAND_NIT, PARAM_NIT_NONE);
+    if (get(DOZE_BRIGHTNESS_PATH, 0) == 1) {
+        set(FOD_STATUS_PATH, FOD_STATUS_OFF);
+    }
     return Void();
-}
-
+}    
 Return<bool> FingerprintInscreen::handleAcquired(int32_t acquiredInfo, int32_t vendorCode) {
     LOG(ERROR) << "acquiredInfo: " << acquiredInfo << ", vendorCode: " << vendorCode << "\n";
     return false;
@@ -124,7 +138,7 @@ Return<int32_t> FingerprintInscreen::getDimAmount(int32_t brightness) {
     if (brightness > 62) {
         alpha = 1.0 - pow(brightness / 255.0 * 430.0 / 600.0, 0.45);
     } else {
-        alpha = 1.0 - pow(brightness / 150.0, 0.45);
+        alpha = 1.0 - pow(brightness / 200.0, 0.45);
     }
 
     return 255 * alpha;
@@ -134,8 +148,7 @@ Return<bool> FingerprintInscreen::shouldBoostBrightness() {
     return false;
 }
 
-Return<void> FingerprintInscreen::setCallback(const sp<::vendor::lineage::biometrics::fingerprint::inscreen::V1_0::IFingerprintInscreenCallback>& callback) {
-    (void) callback;
+Return<void> FingerprintInscreen::setCallback(const sp<IFingerprintInscreenCallback>&) {
     return Void();
 }
 

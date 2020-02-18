@@ -168,6 +168,7 @@ vendor/lib64/libscveCommon.so
 vendor/lib64/libvpptestutils.so
 vendor/lib64/unnhal-acc-common.so
 vendor/lib64/vendor.xiaomi.hardware.mtdservice@1.1.so
+vendor/lib64/vendor.xiaomi.hardware.displayfeature@1.0.so
 vendor/lib64/libscveObjectTracker_stub.so
 vendor/lib64/vendor.qti.hardware.wigig.supptunnel@1.0.so
 vendor/lib64/libqti-util.so
