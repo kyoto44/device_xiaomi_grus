@@ -215,7 +215,6 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.0-impl \
     android.hardware.health@2.0-service
 
-
 # IMS
 PRODUCT_PACKAGES += \
     com.android.ims.rcsmanager
@@ -250,6 +249,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1 \
     lineage.biometrics.fingerprint.inscreen@1.0-service.xiaomi_grus \
+    gfscreenoffd \
     vendor.xiaomi.hardware.fingerprintextension@1.0
 
 # HIDL
