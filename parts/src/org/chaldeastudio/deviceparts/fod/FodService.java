@@ -26,9 +26,11 @@ import android.os.SystemProperties;
 import android.util.Log;
 import androidx.preference.PreferenceManager;
 
-public class FodScreenOffService extends Service {
+import vendor.xiaomi.hardware.displayfeature.V1_0.IDisplayFeature;
 
-    private static final String TAG = "FodScreenOffService";
+public class FodService extends Service {
+
+    private static final String TAG = "FodService";
     private static final boolean DEBUG = false;
 
     private static final String FOD_SCRNOFF_SETTING_KEY = "fod_screenoff_enable";
@@ -85,6 +87,13 @@ public class FodScreenOffService extends Service {
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
             if (Intent.ACTION_SCREEN_ON.equals(action)) {
+                try {
+                    IDisplayFeature mDisplayFeature = IDisplayFeature.getService();
+                    mDisplayFeature.setFeature(0, 0, 2, 255);
+                    mDisplayFeature.setFeature(0, 3, 0, 255);
+                } catch(Exception e) {
+                }
+
                 if (isFodScreenOffEnabled(context)) {
                     listenFodScreenOff(false);
                 }

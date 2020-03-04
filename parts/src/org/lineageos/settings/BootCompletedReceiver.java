@@ -20,12 +20,10 @@ package org.lineageos.settings;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.UserHandle;
 import android.util.Log;
 
 import org.lineageos.settings.doze.DozeUtils;
 import org.chaldeastudio.deviceparts.fod.FodUtils;
-import org.chaldeastudio.deviceparts.fod.FodScreenOffService;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
 
